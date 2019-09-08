@@ -4,15 +4,23 @@ import com.tcore.TCore;
 import com.tcore.api.TCoreAPI;
 import com.tcore.api.objects.TPlayer;
 import com.tcore.exception.TCoreException;
+import com.tcore.gui.OrbInventory;
+import com.tcore.gui.OrbInventoryItem;
+import com.tcore.itemfall.HeadFall;
+import com.tcore.utils.ReflectionUtil;
 import com.tcore.utils.StringUtils;
 import lombok.Data;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
+import java.lang.reflect.Method;
 import java.util.UUID;
 
-@Data public class TCPlayer implements TPlayer, TCoreAPI {
+@Data
+public class TCPlayer implements TPlayer, TCoreAPI {
 
     private TCore api;
 
@@ -118,10 +126,67 @@ import java.util.UUID;
         else throw new TCoreException("Cannot set food for offline player");
     }
 
-    public void restorePlayer(Player player){
-        this.player = player;
+    @Override
+    public int getPing() {
+        if (isOnline()) {
+            try {
+                Class<?> craftPlayer = ReflectionUtil.getCraftBukkitClass("entity.CraftPlayer");
+                Method getHandle = craftPlayer.getMethod("getHandle");
+                Object entityPlayer = getHandle.invoke(player);
+                return (int) ReflectionUtil.getFieldValue(entityPlayer, "ping");
+            } catch (Exception e) {
+                e.printStackTrace();
+                return -1;
+            }
+        } else throw new TCoreException("Cannot get ping for offline player");
     }
 
+    @Override
+    public OrbInventory getInventory() {
+
+        OrbInventory inventory = new OrbInventory(name + "'s Inventory", 54, name, true, true);
+
+        int x = 1;
+        int y = 2;
+
+        inventory.setItem(new OrbInventoryItem(
+                new HeadFall(ChatColor.YELLOW + name)
+                        .owner(name),
+                "head", 5, 1
+        ));
+
+        for (ItemStack itemStack : player.getInventory().getContents()) {
+            inventory.setItem(new OrbInventoryItem(
+                    itemStack,
+                    x + "", x, y
+            ));
+
+            if (x == 9) {
+                y++;
+                x = 1;
+            } else x++;
+
+        }
+
+        x = 1;
+        y = 6;
+
+        for (ItemStack itemStack : player.getInventory().getArmorContents()) {
+            inventory.setItem(new OrbInventoryItem(
+                    itemStack,
+                    x + "", x, y
+            ));
+
+            x++;
+        }
+
+
+        return inventory;
+    }
+
+    public void restorePlayer(Player player) {
+        this.player = player;
+    }
 
 
 }

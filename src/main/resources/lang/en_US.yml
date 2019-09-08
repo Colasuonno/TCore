@@ -20,3 +20,6 @@ lang:
   heal-others: "<7>The player {0} has been healed"
   feed-solo: "<7>You have been fed"
   feed-others: "<7>The player {0} has been fed"
+  ping-solo: "<7>Your ping is <c>{0}<7>ms"
+  ping-others: "<c>{0}<7>'s ping is <c>{1}<7>ms"
+  speed-solo: "<c>{0} <7>speed was set to <c>{1}"

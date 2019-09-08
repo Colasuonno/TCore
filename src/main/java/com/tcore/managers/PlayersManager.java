@@ -34,8 +34,10 @@ public class PlayersManager extends TitansManager {
 
     }
 
-    public void registerPlayer(Player player){
-        players.add(new TCPlayer(tCore, player));
+    public TPlayer registerPlayer(Player player){
+        TPlayer tcPlayer = new TCPlayer(tCore, player);
+        players.add(tcPlayer);
+        return tcPlayer;
     }
 
     /**

@@ -1,6 +1,7 @@
 package com.tcore.api.objects;
 
 import com.tcore.api.TCoreAPI;
+import com.tcore.gui.OrbInventory;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
@@ -17,6 +18,8 @@ public interface TPlayer {
     TCoreAPI getApi();
 
     OfflinePlayer getOfflinePlayer();
+
+    int getPing();
 
     boolean isOnline();
 
@@ -37,5 +40,7 @@ public interface TPlayer {
     void setHeal(int value);
 
     void setFood(int value);
+
+    OrbInventory getInventory();
 
 }

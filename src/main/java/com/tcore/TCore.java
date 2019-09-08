@@ -2,6 +2,7 @@ package com.tcore;
 
 import com.tcore.api.TManager;
 import com.tcore.commands.CommandManager;
+import com.tcore.gui.listeners.InventoryListener;
 import com.tcore.listener.PlayerListener;
 import com.tcore.managers.LangManager;
 import com.tcore.managers.PlayersManager;
@@ -33,6 +34,7 @@ public class TCore extends JavaPlugin {
         this.playerModule = new PlayerModule(this);
 
         new PlayerListener(this);
+        new InventoryListener(this);
 
         // Loading managers modules
         TitansManager.getManagers()
