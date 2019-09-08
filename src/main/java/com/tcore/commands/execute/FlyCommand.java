@@ -5,24 +5,24 @@ import com.tcore.api.objects.TPlayer;
 import com.tcore.commands.CommandManager;
 import com.tcore.commands.FineCommand;
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 public class FlyCommand extends FineCommand {
 
     public FlyCommand(TCore plugin) {
-        super(plugin,"fly", "tcore.command.fly", CommandManager.CommandType.ALL, "flight");
+        super(plugin, "fly", "tcore.command.fly", CommandManager.CommandType.ALL, "flight");
     }
 
     @Override
     public void run(TPlayer player, CommandSender sender, String label, String[] args) {
-        if (args.length == 0 && player != null){
+        if (args.length == 0 && player != null) {
             boolean flying = player.isFlying();
             player.setFly(!flying);
-            player.sendMessage("fly-solo", (!flying ? "enabled" : "disabled") );
-        } else if (args.length == 1){
+            player.sendMessage("fly-solo", (!flying ? "enabled" : "disabled"));
+        } else if (args.length == 1) {
 
-            if (!sender.hasPermission("tcore.command.fly.others")){
+            if (!sender.hasPermission("tcore.command.fly.others")) {
                 super.plugin.getPlayerModule().sendMessage(sender, "no-permission");
                 return;
             }
@@ -35,7 +35,7 @@ public class FlyCommand extends FineCommand {
             TPlayer tPlayer = super.plugin.getPlayersManager().fromPlayer(bukkit);
             boolean flying = tPlayer.isFlying();
             tPlayer.setFly(!flying);
-            super.plugin.getPlayerModule().sendMessage(sender, "fly-others",(!flying ? "enabled" : "disabled"), tPlayer.getName());
+            super.plugin.getPlayerModule().sendMessage(sender, "fly-others", (!flying ? "enabled" : "disabled"), tPlayer.getName());
         } else super.plugin.getPlayerModule().sendText(sender, "<7>/fly <c>(player)");
     }
 }

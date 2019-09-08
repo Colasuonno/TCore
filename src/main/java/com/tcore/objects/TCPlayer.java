@@ -106,6 +106,18 @@ import java.util.UUID;
         return vanish;
     }
 
+    @Override
+    public void setHeal(int value) {
+        if (isOnline()) player.setHealth(value);
+        else throw new TCoreException("Cannot set heal for offline player");
+    }
+
+    @Override
+    public void setFood(int value) {
+        if (isOnline()) player.setFoodLevel(value);
+        else throw new TCoreException("Cannot set food for offline player");
+    }
+
     public void restorePlayer(Player player){
         this.player = player;
     }

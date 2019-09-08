@@ -11,7 +11,7 @@ import org.bukkit.command.CommandSender;
 public class BroadcastCommand extends FineCommand {
 
     public BroadcastCommand(TCore plugin) {
-        super(plugin,"broadcast", "tcore.command.broadcast", CommandManager.CommandType.ALL, "announce", "bc");
+        super(plugin, "broadcast", "tcore.command.broadcast", CommandManager.CommandType.ALL, "announce", "bc");
     }
 
     @Override

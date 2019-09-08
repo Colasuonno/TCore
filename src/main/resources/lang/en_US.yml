@@ -16,3 +16,7 @@ lang:
   god-others: "<7>God has been <c>{0} <7>for player <c>{1}"
   vanish-solo: "<7>Vanish has been <c>{0}"
   vanish-others: "<7>Vanish has been <c>{0} <7>for player <c>{1}"
+  heal-solo: "<7>You have been healed"
+  heal-others: "<7>The player {0} has been healed"
+  feed-solo: "<7>You have been fed"
+  feed-others: "<7>The player {0} has been fed"

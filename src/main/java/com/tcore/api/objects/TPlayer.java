@@ -34,4 +34,8 @@ public interface TPlayer {
 
     boolean isVanish();
 
+    void setHeal(int value);
+
+    void setFood(int value);
+
 }
