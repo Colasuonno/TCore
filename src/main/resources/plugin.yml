@@ -1,0 +1,5 @@
+name: TCore
+version: 0.1-ALPHA
+main: com.tcore.TCore
+description: "TitansCraft Core"
+authors: ["Mr_Replete", "NotAccursed"]
