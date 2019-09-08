@@ -118,6 +118,15 @@ import java.util.UUID;
         else throw new TCoreException("Cannot set food for offline player");
     }
 
+    @Override
+    public void clearInventory() {
+        if (isOnline()) {
+            player.getInventory().setArmorContents(null);
+            player.getInventory().clear();
+        }
+        else throw new TCoreException("Cannot clear the inventory for offline player");
+    }
+
     public void restorePlayer(Player player){
         this.player = player;
     }

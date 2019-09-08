@@ -38,4 +38,6 @@ public interface TPlayer {
 
     void setFood(int value);
 
+    void clearInventory();
+
 }

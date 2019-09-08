@@ -16,7 +16,6 @@ public class FeedCommand extends FineCommand {
 
     @Override
     public void run(TPlayer player, CommandSender sender, String label, String[] args) {
-
         if (args.length == 0 && player != null) {
             player.setFood(20);
             player.sendMessage("feed-solo");
@@ -35,6 +34,6 @@ public class FeedCommand extends FineCommand {
             TPlayer tPlayer = super.plugin.getPlayersManager().fromPlayer(bukkit);
             tPlayer.setFood(20);
             super.plugin.getPlayerModule().sendMessage(sender, "feed-others", tPlayer.getName());
-        }
+        } else super.plugin.getPlayerModule().sendText(sender, "<7>/feed <c>(player)");
     }
 }

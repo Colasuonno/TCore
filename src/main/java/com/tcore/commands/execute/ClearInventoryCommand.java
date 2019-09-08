@@ -8,21 +8,20 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class HealCommand extends FineCommand {
+public class ClearInventory extends FineCommand {
 
-    public HealCommand(TCore plugin) {
-        super(plugin, "heal", "tcore.command.heal", CommandManager.CommandType.ALL);
+    public ClearInventory(TCore plugin) {
+        super(plugin, "clearinventory", "tcore.command.clearinventory", CommandManager.CommandType.ALL, "ci");
     }
 
     @Override
     public void run(TPlayer player, CommandSender sender, String label, String[] args) {
-
         if (args.length == 0 && player != null) {
-            player.setHeal(20);
-            player.sendMessage("heal-solo");
+            player.clearInventory();
+            player.sendMessage("clearinventory-solo");
         } else if (args.length == 1) {
 
-            if (!sender.hasPermission("tcore.command.heal.others")) {
+            if (!sender.hasPermission("tcore.command.clearinventory.others")) {
                 super.plugin.getPlayerModule().sendMessage(sender, "no-permission");
                 return;
             }
@@ -33,8 +32,8 @@ public class HealCommand extends FineCommand {
                 return;
             }
             TPlayer tPlayer = super.plugin.getPlayersManager().fromPlayer(bukkit);
-            tPlayer.setHeal(20);
-            super.plugin.getPlayerModule().sendMessage(sender, "heal-others", tPlayer.getName());
-        } else super.plugin.getPlayerModule().sendText(sender, "<7>/heal <c>(player)");
+            tPlayer.clearInventory();
+            super.plugin.getPlayerModule().sendMessage(sender, "clearinventory-others", tPlayer.getName());
+        } else super.plugin.getPlayerModule().sendText(sender, "<7>/clearinventory <c>(player)");
     }
 }

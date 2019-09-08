@@ -20,3 +20,7 @@ lang:
   heal-others: "<7>The player {0} has been healed"
   feed-solo: "<7>You have been fed"
   feed-others: "<7>The player {0} has been fed"
+  clearinventory-solo: "<7>Your inventory has been cleared"
+  clearinventory-others: "<7>The inventory of the player {0} has been cleared"
+  day-solo: "<7>The current time has been set to day"
+  night-solo: "<7>The current time has been set to night"
