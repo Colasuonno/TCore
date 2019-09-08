@@ -7,6 +7,9 @@ settings:
   display-prefix: true
 
 lang:
+  no-permission: "<c>You do not have permissions"
   player-not-found: "<c>Player not found"
   fly-solo: "<7>Fly has been <c>{0}"
   fly-others: "<7>Fly has been <c>{0} <7>for player <c>{1}"
+  god-solo: "<7>God has been <c>{0}"
+  god-others: "<7>God has been <c>{0} <7>for player <c>{1}"

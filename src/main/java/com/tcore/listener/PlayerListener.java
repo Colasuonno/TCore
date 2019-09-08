@@ -6,6 +6,8 @@ import com.tcore.objects.TCPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.entity.Player;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 public class PlayerListener implements Listener {
@@ -24,7 +26,13 @@ public class PlayerListener implements Listener {
         if (player == null){
             tCore.getPlayersManager().registerPlayer(e.getPlayer());
         } else ((TCPlayer)player).restorePlayer(e.getPlayer());
-
     }
 
+    @EventHandler
+    public void onDamange(EntityDamageEvent e){
+        if (e.getEntity() instanceof Player){
+            TPlayer player = tCore.getPlayersManager().fromPlayer((Player)e.getEntity());
+            if (player.isGod()) e.setCancelled(true);
+        }
+    }
 }

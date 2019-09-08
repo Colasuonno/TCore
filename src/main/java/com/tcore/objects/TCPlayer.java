@@ -21,6 +21,10 @@ import java.util.UUID;
     private Player player;
     private OfflinePlayer offlinePlayer;
 
+    // TCPlayer status
+
+    private boolean god;
+
     public TCPlayer(TCore api, OfflinePlayer offlinePlayer) {
         this.api = api;
         this.offlinePlayer = offlinePlayer;
@@ -80,8 +84,20 @@ import java.util.UUID;
         this.api.getPlayerModule().sendMessage(player, path, args);
     }
 
+    @Override
+    public void setGod(boolean value) {
+        this.god = value;
+    }
+
+    @Override
+    public boolean isGod() {
+        return god;
+    }
+
     public void restorePlayer(Player player){
         this.player = player;
     }
+
+
 
 }
