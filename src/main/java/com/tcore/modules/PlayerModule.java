@@ -26,6 +26,11 @@ public class PlayerModule extends TitansManager {
 
     }
 
+    public void sendText(CommandSender sender, String message, Object... args){
+            String valid = (api.getLangManager().getLangModule().isUsingPrefix() ? api.getLangManager().getLangModule().getPrefix() : "") + " " +  message;
+            sender.sendMessage(StringUtils.parseString(valid, args));
+    }
+
     public void sendMessage(CommandSender sender, String path, Object... args){
         String message = api.getLangManager().getLangModule().getMessages().getOrDefault(path, "<none>");
         if (message.equalsIgnoreCase("<none>")) throw new TCoreException("Config path not found");
@@ -42,5 +47,6 @@ public class PlayerModule extends TitansManager {
             online.setFlying(value);
         } else throw new TCoreException("Cannot set fly for offline player");
     }
+
 
 }

@@ -22,6 +22,11 @@ public class FlyCommand extends FineCommand {
             player.sendMessage("fly-solo", (!flying ? "enabled" : "disabled") );
         } else if (args.length == 1){
 
+            if (!sender.hasPermission("tcore.command.fly.others")){
+                super.plugin.getPlayerModule().sendMessage(sender, "no-permission");
+                return;
+            }
+
             Player bukkit = Bukkit.getPlayer(args[0]);
             if (bukkit == null) {
                 super.plugin.getPlayerModule().sendMessage(sender, "player-not-found");
@@ -30,8 +35,7 @@ public class FlyCommand extends FineCommand {
             TPlayer tPlayer = super.plugin.getPlayersManager().fromPlayer(bukkit);
             boolean flying = tPlayer.isFlying();
             tPlayer.setFly(!flying);
-            tPlayer.sendMessage("fly-solo", (!flying ? "enabled" : "disabled") );
             super.plugin.getPlayerModule().sendMessage(sender, "fly-others",(!flying ? "enabled" : "disabled"), tPlayer.getName());
-        }
+        } else super.plugin.getPlayerModule().sendText(sender, "<7>/fly <c>(player)");
     }
 }

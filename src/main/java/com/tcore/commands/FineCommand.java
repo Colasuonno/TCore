@@ -101,7 +101,7 @@ public abstract class FineCommand extends BukkitCommand {
      * @param label  command name
      * @param args   command arguments
      */
-    public abstract void run(TPlayer tPlayer, CommandSender sender, String label, String[] args);
+    public abstract void run(TPlayer player, CommandSender sender, String label, String[] args);
 
     private boolean isAllowed(CommandSender commandSender) {
         String perm = this.getPermission();

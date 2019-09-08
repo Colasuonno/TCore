@@ -26,4 +26,8 @@ public interface TPlayer {
 
     boolean isFlying();
 
+    void setGod(boolean value);
+
+    boolean isGod();
+
 }
