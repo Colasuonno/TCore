@@ -29,7 +29,7 @@ public class TCore extends JavaPlugin {
         this.langManager = new LangManager(this);
         this.commandManager = new CommandManager(this);
         this.playersManager = new PlayersManager(this);
-        this.playerModule = new PlayerModule();
+        this.playerModule = new PlayerModule(this);
 
         new PlayerListener(this);
 
