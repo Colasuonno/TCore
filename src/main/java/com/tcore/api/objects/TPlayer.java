@@ -1,5 +1,6 @@
 package com.tcore.api.objects;
 
+import com.maxmind.geoip2.model.CityResponse;
 import com.tcore.api.TCoreAPI;
 import com.tcore.gui.OrbInventory;
 import org.bukkit.GameMode;
@@ -47,5 +48,7 @@ public interface TPlayer {
     void clearInventory();
 
     void setGamemode(GameMode gamemode);
+
+    CityResponse getCityResponse();
 
 }

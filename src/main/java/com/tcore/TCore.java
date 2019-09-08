@@ -7,6 +7,7 @@ import com.tcore.listener.PlayerListener;
 import com.tcore.managers.LangManager;
 import com.tcore.managers.PlayersManager;
 import com.tcore.managers.TitansManager;
+import com.tcore.modules.GeoModule;
 import com.tcore.modules.PlayerModule;
 import com.tcore.utils.StringUtils;
 import com.tcore.utils.YamlConfig;
@@ -22,6 +23,7 @@ public class TCore extends JavaPlugin {
     @Getter private PlayersManager playersManager;
     @Getter private PlayerModule playerModule;
     @Getter private LangManager langManager;
+    @Getter private GeoModule geoModule;
 
     @Override
     public void onEnable() {
@@ -32,6 +34,7 @@ public class TCore extends JavaPlugin {
         this.commandManager = new CommandManager(this);
         this.playersManager = new PlayersManager(this);
         this.playerModule = new PlayerModule(this);
+        this.geoModule = new GeoModule(this);
 
         new PlayerListener(this);
         new InventoryListener(this);

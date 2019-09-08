@@ -8,6 +8,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ItemFall extends ItemStack {
@@ -18,7 +19,6 @@ public class ItemFall extends ItemStack {
      *
      * @param material type
      */
-    @Deprecated
     public ItemFall(Material material) {
         super(material, 1);
 
@@ -73,6 +73,17 @@ public class ItemFall extends ItemStack {
         ItemMeta meta = getItemMeta();
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', displayName));
         itemMeta(meta);
+        return this;
+    }
+
+    /**
+     * Apply the lore given
+     *
+     * @param lore to apply
+     * @return ItemFall + lore
+     */
+    public ItemFall lore(String... lore) {
+        lore(Arrays.asList(lore));
         return this;
     }
 
