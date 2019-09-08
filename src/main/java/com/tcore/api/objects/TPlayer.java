@@ -30,4 +30,8 @@ public interface TPlayer {
 
     boolean isGod();
 
+    void setVanish(boolean value);
+
+    boolean isVanish();
+
 }

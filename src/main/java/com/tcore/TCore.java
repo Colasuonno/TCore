@@ -7,6 +7,7 @@ import com.tcore.managers.LangManager;
 import com.tcore.managers.PlayersManager;
 import com.tcore.managers.TitansManager;
 import com.tcore.modules.PlayerModule;
+import com.tcore.utils.StringUtils;
 import com.tcore.utils.YamlConfig;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
