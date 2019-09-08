@@ -1,27 +1,28 @@
-package com.tcore.commands.execute;
+package com.tcore.commands.execute.gamemodes;
 
 import com.tcore.TCore;
 import com.tcore.api.objects.TPlayer;
 import com.tcore.commands.CommandManager;
 import com.tcore.commands.FineCommand;
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class ClearInventoryCommand extends FineCommand {
+public class SurvivalCommand extends FineCommand {
 
-    public ClearInventoryCommand(TCore plugin) {
-        super(plugin, "clearinventory", "tcore.command.clearinventory", CommandManager.CommandType.ALL, "ci");
+    public SurvivalCommand(TCore plugin) {
+        super(plugin, "gms", "tcore.command.survival", CommandManager.CommandType.ALL);
     }
 
     @Override
     public void run(TPlayer player, CommandSender sender, String label, String[] args) {
         if (args.length == 0 && player != null) {
-            player.clearInventory();
-            player.sendMessage("clearinventory-solo");
+            player.setGamemode(GameMode.SURVIVAL);
+            player.sendMessage("gamemode-solo", "Survival");
         } else if (args.length == 1) {
 
-            if (!sender.hasPermission("tcore.command.clearinventory.others")) {
+            if (!sender.hasPermission("tcore.command.survival.others")) {
                 super.plugin.getPlayerModule().sendMessage(sender, "no-permission");
                 return;
             }
@@ -32,8 +33,8 @@ public class ClearInventoryCommand extends FineCommand {
                 return;
             }
             TPlayer tPlayer = super.plugin.getPlayersManager().fromPlayer(bukkit);
-            tPlayer.clearInventory();
-            super.plugin.getPlayerModule().sendMessage(sender, "clearinventory-others", tPlayer.getName());
-        } else super.plugin.getPlayerModule().sendText(sender, "<7>/clearinventory <c>(player)");
+            tPlayer.setGamemode(GameMode.SURVIVAL);
+            super.plugin.getPlayerModule().sendMessage(sender, "gamemode-others", tPlayer.getName(), "Survival");
+        } else super.plugin.getPlayerModule().sendText(sender, "<7>/gms <c>(player)");
     }
 }

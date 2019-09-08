@@ -7,6 +7,7 @@ import com.tcore.exception.TCoreException;
 import com.tcore.utils.StringUtils;
 import lombok.Data;
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
@@ -25,6 +26,8 @@ import java.util.UUID;
 
     private boolean god;
     private boolean vanish;
+
+    private int gamemode;
 
     public TCPlayer(TCore api, OfflinePlayer offlinePlayer) {
         this.api = api;
@@ -126,6 +129,15 @@ import java.util.UUID;
         }
         else throw new TCoreException("Cannot clear the inventory for offline player");
     }
+
+    @Override
+    public void setGamemode(GameMode gamemode) {
+        if (isOnline()) {
+            player.setGameMode(gamemode);
+        }
+        else throw new TCoreException("Cannot set survival gamemode for offline player");
+    }
+
 
     public void restorePlayer(Player player){
         this.player = player;
