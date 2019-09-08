@@ -2,6 +2,7 @@ package com.tcore.api.objects;
 
 import com.tcore.api.TCoreAPI;
 import com.tcore.gui.OrbInventory;
+import org.bukkit.GameMode;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
@@ -42,5 +43,9 @@ public interface TPlayer {
     void setFood(int value);
 
     OrbInventory getInventory();
+
+    void clearInventory();
+
+    void setGamemode(GameMode gamemode);
 
 }

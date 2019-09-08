@@ -20,6 +20,15 @@ lang:
   heal-others: "<7>The player {0} has been healed"
   feed-solo: "<7>You have been fed"
   feed-others: "<7>The player {0} has been fed"
+<<<<<<< HEAD
   ping-solo: "<7>Your ping is <c>{0}<7>ms"
   ping-others: "<c>{0}<7>'s ping is <c>{1}<7>ms"
   speed-solo: "<c>{0} <7>speed was set to <c>{1}"
+=======
+  clearinventory-solo: "<7>Your inventory has been cleared"
+  clearinventory-others: "<7>The inventory of the player {0} been cleared"
+  gamemode-solo: "<7>Your gamemode has been updated to <c>{0}"
+  gamemode-others: "<7>The gamemode of the player {0} has been updated to <c>{1}"
+  day-solo: "<7>The current time has been set to day"
+  night-solo: "<7>The current time has been set to night"
+>>>>>>> 848f6d3806334bb64cc3c3804f8636d80be57946
