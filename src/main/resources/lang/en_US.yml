@@ -1,0 +1,11 @@
+#######################
+#  TCore en_US lang   #
+#######################
+
+settings:
+  prefix: "<7>[<c><l>TitansCraft<7>]"
+  display-prefix: true
+
+lang:
+  fly-solo: "<7>Fly has been <c>{0}"
+  fly-others: "<7>Fly has been <c>{0} <7>for player <c>{1}"
