@@ -1,7 +1,12 @@
 ## TODO LIST - TCore
 
 * <s>Heal</s>
-* Feed
+* <s>Feed</s>
+* <s>Broadcast</s>
+* <s>ClearChat</s>
+* <s>Fly</s>
+* <s>God</s>
+* <s>Vanish</s>
 * Ping
 * Gamemode
 * Speed
