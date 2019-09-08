@@ -77,15 +77,7 @@ import java.util.UUID;
 
     @Override
     public void sendMessage(String path, Object... args) {
-        String message = api.getLangManager().getLangModule().getMessages().getOrDefault(path, "<none>");
-        if (message.equalsIgnoreCase("<none>")) throw new TCoreException("Config path not found");
-        else {
-            if (isOnline()) {
-                String valid = (api.getLangManager().getLangModule().isUsingPrefix() ? api.getLangManager().getLangModule().getPrefix() : "") + " " +  message;
-                player.sendMessage(StringUtils.parseString(valid, args));
-            }
-            else throw new TCoreException("Cannot check fly for offline player");
-        }
+        this.api.getPlayerModule().sendMessage(player, path, args);
     }
 
     public void restorePlayer(Player player){

@@ -7,5 +7,6 @@ settings:
   display-prefix: true
 
 lang:
+  player-not-found: "<c>Player not found"
   fly-solo: "<7>Fly has been <c>{0}"
   fly-others: "<7>Fly has been <c>{0} <7>for player <c>{1}"

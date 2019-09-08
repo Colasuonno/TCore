@@ -17,8 +17,8 @@ import java.util.List;
 
 public abstract class FineCommand extends BukkitCommand {
 
-    private CommandManager.CommandType type;
-    private TCore plugin;
+    protected CommandManager.CommandType type;
+    protected TCore plugin;
 
     /**
      * Auto-Register commands throw FineCommand constructor
