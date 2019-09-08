@@ -9,7 +9,10 @@ settings:
 lang:
   no-permission: "<c>You do not have permissions"
   player-not-found: "<c>Player not found"
+  broadcast: "<c>[Broadcast] <7>{0}"
   fly-solo: "<7>Fly has been <c>{0}"
   fly-others: "<7>Fly has been <c>{0} <7>for player <c>{1}"
   god-solo: "<7>God has been <c>{0}"
   god-others: "<7>God has been <c>{0} <7>for player <c>{1}"
+  vanish-solo: "<7>Vanish has been <c>{0}"
+  vanish-others: "<7>Vanish has been <c>{0} <7>for player <c>{1}"

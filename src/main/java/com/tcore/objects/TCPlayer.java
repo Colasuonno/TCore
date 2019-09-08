@@ -24,6 +24,7 @@ import java.util.UUID;
     // TCPlayer status
 
     private boolean god;
+    private boolean vanish;
 
     public TCPlayer(TCore api, OfflinePlayer offlinePlayer) {
         this.api = api;
@@ -92,6 +93,17 @@ import java.util.UUID;
     @Override
     public boolean isGod() {
         return god;
+    }
+
+    @Override
+    public void setVanish(boolean value) {
+        this.api.getPlayerModule().setVanish(this, value);
+        this.vanish = value;
+    }
+
+    @Override
+    public boolean isVanish() {
+        return vanish;
     }
 
     public void restorePlayer(Player player){
