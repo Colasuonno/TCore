@@ -20,9 +20,9 @@ public class GodCommand extends FineCommand {
             boolean god = player.isGod();
             player.setGod(!god);
             player.sendMessage("god-solo", (!god ? "enabled" : "disabled"));
-        }else if (args.length == 1){
+        } else if (args.length == 1) {
 
-            if (!sender.hasPermission("tcore.command.god.others")){
+            if (!sender.hasPermission("tcore.command.god.others")) {
                 super.plugin.getPlayerModule().sendMessage(sender, "no-permission");
                 return;
             }
@@ -35,7 +35,7 @@ public class GodCommand extends FineCommand {
             TPlayer tPlayer = super.plugin.getPlayersManager().fromPlayer(bukkit);
             boolean god = tPlayer.isGod();
             tPlayer.setGod(!god);
-            super.plugin.getPlayerModule().sendMessage(sender, "god-others",(!god ? "enabled" : "disabled"), tPlayer.getName());
+            super.plugin.getPlayerModule().sendMessage(sender, "god-others", (!god ? "enabled" : "disabled"), tPlayer.getName());
         } else super.plugin.getPlayerModule().sendText(sender, "<7>/god <c>(player)");
     }
 }

@@ -63,6 +63,7 @@ public class PlayerModule extends TitansManager {
         } else throw new TCoreException("Cannot set fly for offline player");
     }
 
+
     public void setVanish(TPlayer player, boolean value) {
         Player online = player.getPlayer();
         if (player.isOnline()) {
