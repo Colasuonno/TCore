@@ -13,7 +13,7 @@ import org.bukkit.entity.Player;
 public class PrivateMessagesCommand extends FineCommand {
 
     public PrivateMessagesCommand(TCore plugin) {
-        super(plugin, "msg", "tcore.command.msg", CommandManager.CommandType.PLAYER, "m", "message", "a", "ma");
+        super(plugin, "msg", "tcore.command.msg", CommandManager.CommandType.PLAYER, "m", "message", "a", "ma", "tell", "say");
     }
 
     @Override

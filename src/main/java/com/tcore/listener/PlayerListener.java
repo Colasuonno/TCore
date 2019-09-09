@@ -11,7 +11,9 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
@@ -54,8 +56,21 @@ public class PlayerListener implements Listener {
     public void onDamange(EntityDamageEvent e) {
         if (e.getEntity() instanceof Player) {
             TPlayer player = tCore.getPlayersManager().fromPlayer((Player) e.getEntity());
-            if (player.isGod()) e.setCancelled(true);
+            if (player.isGod() || tCore.getSettingsModule().getBoolean("invincibility")) e.setCancelled(true);
         }
+    }
+
+    @EventHandler
+    public void onFoodChange(FoodLevelChangeEvent e) {
+        if (e.getEntity() instanceof Player) {
+            TPlayer player = tCore.getPlayersManager().fromPlayer((Player) e.getEntity());
+            if (!tCore.getSettingsModule().getBoolean("food-level-change")) e.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onBreakBlocks(BlockBreakEvent e) {
+        if (tCore.getSettingsModule().getBoolean("no-break-block")) e.setCancelled(true);
     }
 
     @EventHandler
