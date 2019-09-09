@@ -16,7 +16,11 @@ import com.tcore.utils.YamlConfig;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import me.lucko.luckperms.LuckPerms;
+import me.lucko.luckperms.api.LuckPermsApi;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class TCore extends JavaPlugin {
@@ -28,6 +32,8 @@ public class TCore extends JavaPlugin {
     @Getter private GeoModule geoModule;
     @Getter private SettingsModule settingsModule;
     @Getter private DataModule dataModule;
+
+    @Getter private LuckPermsApi luckPerms;
 
     @Override
     public void onEnable() {
@@ -55,6 +61,12 @@ public class TCore extends JavaPlugin {
         TitansManager.getManagers()
                 .forEach(TManager::enable);
 
+        RegisteredServiceProvider<LuckPermsApi> provider = Bukkit.getServicesManager().getRegistration(LuckPermsApi.class);
+        if (provider != null) {
+           luckPerms = provider.getProvider();
+        }
+
     }
+
 
 }
