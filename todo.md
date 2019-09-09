@@ -14,8 +14,8 @@
 * <s>Time (day - night)</s>
 * <s>Inventory</s>
 * <s>Teleports</s>
+* <s>SetSpawn</s>
 * Private Messages
 * Chat
 * Ignore
-* SetSpawn
 * Back
