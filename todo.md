@@ -15,7 +15,7 @@
 * <s>Inventory</s>
 * <s>Teleports</s>
 * <s>SetSpawn</s>
-* Private Messages
-* Chat
+* <s>Chat</s>
+* <s>Private Messages</s>
+* <s>Back</s>
 * Ignore
-* Back

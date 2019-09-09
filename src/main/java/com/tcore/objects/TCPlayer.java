@@ -36,6 +36,7 @@ public class TCPlayer implements TPlayer, TCoreAPI {
     private boolean god;
     private boolean vanish;
     private Location lastLocation;
+    private UUID lastTextedPlayer;
 
     public TCPlayer(TCore api, OfflinePlayer offlinePlayer) {
         this.api = api;

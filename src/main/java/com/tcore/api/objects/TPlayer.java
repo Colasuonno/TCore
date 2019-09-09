@@ -58,4 +58,7 @@ public interface TPlayer {
 
     void setLastTeleportLocation(Location location);
 
+    void setLastTextedPlayer(UUID uuid);
+
+    UUID getLastTextedPlayer();
 }

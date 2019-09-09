@@ -40,9 +40,21 @@ public class PlayerModule extends TitansManager {
         }
     }
 
+    public void sendVirginBroadcastMessage(String path, Object... args) {
+        String message = api.getLangManager().getLangModule().getMessages().getOrDefault(path, "<none>");
+        if (message.equalsIgnoreCase("<none>")) throw new TCoreException("Config path not found");
+        else {
+            Bukkit.broadcastMessage(StringUtils.parseString(message, args));
+        }
+    }
+
     public void sendBroadcastText(String message, Object... args) {
         String valid = (api.getLangManager().getLangModule().isUsingPrefix() ? api.getLangManager().getLangModule().getPrefix() : "") + " " + message;
         Bukkit.broadcastMessage(StringUtils.parseString(valid, args));
+    }
+
+    public void sendVirginText(CommandSender sender, String message, Object... args) {
+        sender.sendMessage(StringUtils.parseString(message, args));
     }
 
     public void sendText(CommandSender sender, String message, Object... args) {

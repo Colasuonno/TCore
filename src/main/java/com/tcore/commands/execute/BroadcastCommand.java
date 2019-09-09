@@ -17,6 +17,6 @@ public class BroadcastCommand extends FineCommand {
     @Override
     public void run(TPlayer player, CommandSender sender, String label, String[] args) {
         String message = StringUtils.buildSentence(args, 0);
-        plugin.getPlayerModule().sendBroadcastMessage("broadcast", ChatColor.translateAlternateColorCodes('&', message));
+        plugin.getPlayerModule().sendVirginBroadcastMessage("broadcast", ChatColor.translateAlternateColorCodes('&', message));
     }
 }

@@ -12,6 +12,7 @@ import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class PlayersManager extends TitansManager {
 
@@ -48,6 +49,27 @@ public class PlayersManager extends TitansManager {
     public TPlayer fromPlayer(Player player){
         if (contains(player)) return players.stream().filter(tc -> tc.getUUID().equals(player.getUniqueId())).findAny().orElse(null);
         else return null;
+    }
+
+    /**
+     * Gets TPlayer from UUID
+     * @param uuid of the player
+     * @return the Tplayer if found
+     */
+    public TPlayer fromUUID(UUID uuid){
+        if (contains(uuid)) return players.stream().filter(tc -> tc.getUUID().equals(uuid)).findAny().orElse(null);
+        else return null;
+    }
+
+    /**
+     * Checks if we already located that kind of player
+     * @param player to check
+     * @return if it is loaded
+     */
+    public boolean contains(UUID player){
+        return players
+                .stream()
+                .anyMatch(tc -> tc.getUUID().equals(player));
     }
 
     /**
