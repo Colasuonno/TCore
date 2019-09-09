@@ -8,14 +8,14 @@
 * <s>God</s>
 * <s>Vanish</s>
 * <s>Ping</s>
-* Gamemode
+* <s>Gamemode</s>
 * <s>Speed</s>
-* Teleports
+* <s>ClearInventory</s>
+* <s>Time (day - night)</s>
+* <s>Inventory</s>
+* <s>Teleports</s>
 * Private Messages
 * Chat
-* <s>Time (day - night)</s>
-* Inventory
 * Ignore
 * SetSpawn
 * Back
-* <s>ClearInventory</s>

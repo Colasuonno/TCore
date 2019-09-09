@@ -45,36 +45,6 @@ public class GeoModule extends TitansManager {
         super.disable();
     }
 
-    /**
-     * Download from internet <3
-     *
-     * @param url
-     * @throws IOException
-     */
-
-    private void downloadFrom(String url) throws IOException {
-        URL CityURL = new URL(url);
-
-        URLConnection connection = CityURL.openConnection();
-        connection.setConnectTimeout(10000);
-        connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Minecraft server) Bukkit");
-        connection.connect();
-        InputStream input = connection.getInputStream();
-
-        tCore.getDataFolder().mkdir();
-
-        OutputStream output = new FileOutputStream(new File(tCore.getDataFolder(), "GeoIP2-City.mmdb"));
-        byte[] buffer = new byte[2048];
-        int length = input.read(buffer);
-        while (length >= 0) {
-            output.write(buffer, 0, length);
-            length = input.read(buffer);
-        }
-
-        output.close();
-        input.close();
-    }
-
     public DatabaseReader getReader() {
         return reader;
     }
