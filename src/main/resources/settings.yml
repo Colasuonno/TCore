@@ -1,0 +1,12 @@
+#################################
+#  TCore Settings Configuration #
+#################################
+
+# WARNING: Check all the valid langs in the lang directory
+lang: en_US
+
+# If true, teleport a player to #spawn-location on join
+spawn-teleport: true
+
+# If not <none> and spawn-teleport is true, teleport a player to this location
+spawn-location: "<none>"

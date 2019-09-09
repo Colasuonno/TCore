@@ -4,7 +4,10 @@ import com.tcore.TCore;
 import com.tcore.api.objects.TPlayer;
 import com.tcore.managers.PlayersManager;
 import com.tcore.objects.TCPlayer;
+import com.tcore.utils.LocationUtil;
+import com.tcore.utils.StringUtils;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.entity.Player;
@@ -34,6 +37,13 @@ public class PlayerListener implements Listener {
                 .forEach(tPlayer ->
                         tCore.getPlayerModule().setVanish(tPlayer, true)
                 );
+
+        if (tCore.getSettingsModule().getBoolean("spawn-teleport")){
+            String loc = tCore.getSettingsModule().getString("spawn-location");
+            if (!StringUtils.isNone(loc)){
+                player.getPlayer().teleport(LocationUtil.convertToLocation(loc));
+            } else StringUtils.m(ChatColor.RED + "Spawn Teleport ACTIVE but location not set", Bukkit.getConsoleSender());
+        }
 
     }
 

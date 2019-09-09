@@ -1,6 +1,5 @@
-package com.tcore.lang;
+package com.tcore.modules.lang;
 
-import lombok.Data;
 import lombok.Getter;
 import org.bukkit.configuration.file.FileConfiguration;
 

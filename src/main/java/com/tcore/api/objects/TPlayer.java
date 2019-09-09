@@ -27,6 +27,8 @@ public interface TPlayer {
 
     void sendMessage(String path, Object... args);
 
+    void sendText(String message);
+
     void setFly(boolean value);
 
     boolean isFlying();

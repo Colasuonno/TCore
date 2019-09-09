@@ -247,6 +247,11 @@ public class TCPlayer implements TPlayer, TCoreAPI {
     }
 
     @Override
+    public void sendText(String message) {
+        api.getPlayerModule().sendText(player, message);
+    }
+
+    @Override
     public void setGamemode(GameMode gamemode) {
         if (isOnline()) {
             player.setGameMode(gamemode);
