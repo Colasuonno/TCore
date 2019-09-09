@@ -4,6 +4,7 @@ import com.maxmind.geoip2.model.CityResponse;
 import com.tcore.api.TCoreAPI;
 import com.tcore.gui.OrbInventory;
 import org.bukkit.GameMode;
+import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
@@ -52,5 +53,9 @@ public interface TPlayer {
     void setGamemode(GameMode gamemode);
 
     CityResponse getCityResponse();
+
+    Location getLastTeleportLocation();
+
+    void setLastTeleportLocation(Location location);
 
 }

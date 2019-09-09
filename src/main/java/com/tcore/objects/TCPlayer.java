@@ -35,8 +35,7 @@ public class TCPlayer implements TPlayer, TCoreAPI {
 
     private boolean god;
     private boolean vanish;
-
-    private int gamemode;
+    private Location lastLocation;
 
     public TCPlayer(TCore api, OfflinePlayer offlinePlayer) {
         this.api = api;
@@ -256,6 +255,16 @@ public class TCPlayer implements TPlayer, TCoreAPI {
         if (isOnline()) {
             player.setGameMode(gamemode);
         } else throw new TCoreException("Cannot set survival gamemode for offline player");
+    }
+
+    @Override
+    public Location getLastTeleportLocation() {
+        return lastLocation;
+    }
+
+    @Override
+    public void setLastTeleportLocation(Location location) {
+        this.lastLocation = location;
     }
 
     public void restorePlayer(Player player) {

@@ -14,6 +14,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerTeleportEvent;
 
 public class PlayerListener implements Listener {
 
@@ -61,6 +62,14 @@ public class PlayerListener implements Listener {
         TPlayer player = tCore.getPlayersManager().fromPlayer(e.getPlayer());
         String format = tCore.getSettingsModule().getString("chat-format");
         e.setFormat(tCore.getPlayerModule().getChatReplacerModule().replace(player, format, e.getMessage()));
+    }
+
+    @EventHandler
+    public void onTeleport(PlayerTeleportEvent e){
+        if (!e.isCancelled()){
+            TPlayer player = tCore.getPlayersManager().fromPlayer(e.getPlayer());
+            player.setLastTeleportLocation(e.getFrom());
+        }
     }
 
 }
