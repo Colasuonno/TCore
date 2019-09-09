@@ -10,6 +10,7 @@ public class ChatReplacerModule {
         return StringUtils.parseString(input
                 .replace("<PLAYER_NAME>", player.getName())
                 .replace("<DISPLAY_NAME>", player.getPlayer().getDisplayName())
+                .replace("<LEVEL>", "")
                 .replace("<MESSAGE>", ChatColor.translateAlternateColorCodes('&', message)));
     }
 

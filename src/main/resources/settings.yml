@@ -21,4 +21,4 @@ spawn-teleport: true
 # <LEVEL> = Player Level ** (Leveling depend)
 # <GROUP> = Player Group ** (LuckPerm depend)
 # <MESSAGE> = Player Message
-chat-format: "<b><PLAYER_NAME><7>: <MESSAGE>"
+chat-format: "<e><LEVEL>  <b><PLAYER_NAME><7>: <LEVEL_COLOR><MESSAGE>"
