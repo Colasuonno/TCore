@@ -15,6 +15,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
+import org.bukkit.scheduler.BukkitRunnable;
 
 public class PlayerListener implements Listener {
 
@@ -32,6 +33,17 @@ public class PlayerListener implements Listener {
         if (player == null) {
             player = tCore.getPlayersManager().registerPlayer(e.getPlayer());
         } else ((TCPlayer) player).restorePlayer(e.getPlayer());
+
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                TPlayer cloned = tCore.getPlayersManager().fromPlayer(e.getPlayer());
+                String title = tCore.getSettingsModule().getString("scoreboard-title");
+
+                tCore.getScoreboardModule().registerPlayer(e.getPlayer(), tCore);
+                tCore.getScoreboardModule().updateTitle(e.getPlayer(), tCore, ChatColor.translateAlternateColorCodes('&',  tCore.getPlayerModule().getChatReplacerModule().replace(cloned, title, "")));
+            }
+        }.runTaskAsynchronously(tCore);
 
         PlayersManager.getPlayers()
                 .stream()

@@ -9,8 +9,10 @@ import com.tcore.managers.PlayersManager;
 import com.tcore.managers.TitansManager;
 import com.tcore.modules.GeoModule;
 import com.tcore.modules.PlayerModule;
+import com.tcore.modules.scoreboard.ScoreboardModule;
 import com.tcore.modules.settings.DataModule;
 import com.tcore.modules.settings.SettingsModule;
+import com.tcore.task.AsyncScoreboardPlacer;
 import com.tcore.utils.StringUtils;
 import com.tcore.utils.YamlConfig;
 import lombok.Data;
@@ -32,8 +34,10 @@ public class TCore extends JavaPlugin {
     @Getter private GeoModule geoModule;
     @Getter private SettingsModule settingsModule;
     @Getter private DataModule dataModule;
+    @Getter private ScoreboardModule scoreboardModule;
 
     @Getter private LuckPermsApi luckPerms;
+
 
     @Override
     public void onEnable() {
@@ -48,6 +52,7 @@ public class TCore extends JavaPlugin {
         this.settingsModule.enable();
         this.dataModule.enable();
 
+        this.scoreboardModule = new ScoreboardModule();
         this.langManager = new LangManager(this);
         this.commandManager = new CommandManager(this);
         this.playersManager = new PlayersManager(this);
@@ -60,6 +65,9 @@ public class TCore extends JavaPlugin {
         // Loading managers modules
         TitansManager.getManagers()
                 .forEach(TManager::enable);
+
+        // Tasks
+        new AsyncScoreboardPlacer(this).runTaskTimerAsynchronously(this, 20L, 20L);
 
         RegisteredServiceProvider<LuckPermsApi> provider = Bukkit.getServicesManager().getRegistration(LuckPermsApi.class);
         if (provider != null) {

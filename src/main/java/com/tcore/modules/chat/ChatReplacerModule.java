@@ -10,12 +10,14 @@ import me.lucko.luckperms.api.User;
 import me.lucko.luckperms.api.caching.MetaData;
 import org.bukkit.ChatColor;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ChatReplacerModule {
 
-    private final Map<int[], String> colorsValue = new HashMap<int[], String>(){
+    private final Map<int[], String> colorsValue = new HashMap<int[], String>() {
         {
             put(new int[]{0, 19}, ChatColor.GRAY.toString());
             put(new int[]{20, 39}, ChatColor.DARK_GREEN.toString());
@@ -27,14 +29,22 @@ public class ChatReplacerModule {
         }
     };
 
-    private String getColor(int level){
-        for (int[] values : colorsValue.keySet()){
+    private String getColor(int level) {
+        for (int[] values : colorsValue.keySet()) {
             if (values[0] >= level && values[1] <= level) return colorsValue.get(values);
         }
         return ChatColor.GRAY.toString();
     }
 
-    public String replace(TPlayer player, String input, String message){
+    public List<String> replace(TPlayer player, List<String> input) {
+        List<String> result = new ArrayList<>();
+        for (String a : input){
+            result.add(replace(player, a, ""));
+        }
+        return result;
+    }
+
+    public String replace(TPlayer player, String input, String message) {
         TCore api = player.getApi().getAPI();
 
         User user = api.getLuckPerms().getUser(player.getUUID());
@@ -44,9 +54,11 @@ public class ChatReplacerModule {
         return StringUtils.parseString(input
                 .replace("<PLAYER_NAME>", player.getName())
                 .replace("<DISPLAY_NAME>", player.getPlayer().getDisplayName())
-          //      .replace("<LEVEL>", String.valueOf(LevelingAPI.getLevel(player.getPlayer())))
-          //      .replace("<LEVEL_COLOR>", getColor(LevelingAPI.getLevel(player.getPlayer())))
-                .replace("<GROUP>", metaData.getPrefix() == null ? user.getPrimaryGroup() : ChatColor.translateAlternateColorCodes('&', metaData.getPrefix()))
+                //      .replace("<LEVEL>", String.valueOf(LevelingAPI.getLevel(player.getPlayer())))
+                //      .replace("<LEVEL_COLOR>", getColor(LevelingAPI.getLevel(player.getPlayer())))
+                .replace("<PING>", String.valueOf(player.getPing()))
+                .replace("<GROUP>", user.getPrimaryGroup())
+                .replace("<PRIMARY_GROUP_PREFIX>", metaData.getPrefix() == null ? user.getPrimaryGroup() : ChatColor.translateAlternateColorCodes('&', metaData.getPrefix()))
                 .replace("<MESSAGE>", ChatColor.translateAlternateColorCodes('&', message)));
     }
 

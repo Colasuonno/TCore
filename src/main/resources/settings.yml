@@ -2,6 +2,19 @@
 #  TCore Settings Configuration #
 #################################
 
+# Valid Placeholders:
+# <PLAYER_NAME> = Player name
+# <DISPLAY_NAME> = Player Display name
+# <FACTION> = Player Faction ** (TFaction depend)
+# <LEVEL_COLOR> = Player Level Color ** (Leveling depend)
+# <LEVEL> = Player Level ** (Leveling depend)
+# <GROUP> = Player Group ** (LuckPerm depend)
+# <PRIMARY_GROUP_PREFIX> = Group Prefix ** (LuckPerm depend)
+# <MESSAGE> = Player Message
+# <PING> = Player ping
+# INFO: All this placeholders works on Chat and Scoreboard
+
+
 # WARNING: Check all the valid langs in the lang directory
 lang: en_US
 
@@ -13,12 +26,21 @@ spawn-teleport: true
 #  TCore Chat section    #
 ##########################
 
-# Valid Placeholders:
-# <PLAYER_NAME> = Player name
-# <DISPLAY_NAME> = Player Display name
-# <FACTION> = Player Faction ** (TFaction depend)
-# <LEVEL_COLOR> = Player Level Color ** (Leveling depend)
-# <LEVEL> = Player Level ** (Leveling depend)
-# <GROUP> = Player Group ** (LuckPerm depend)
-# <MESSAGE> = Player Message
-chat-format: '<e><LEVEL> <b><PLAYER_NAME><7>: <LEVEL_COLOR><MESSAGE>'
+# Not all placeholders will works if not all softDepends are loaded
+chat-format: '<e><PRIMARY_GROUP_PREFIX> <b><PLAYER_NAME><7>: <MESSAGE>'
+
+
+################################
+#   TCore Scoreboard section   #
+################################
+
+# By default it is false, can be turned on by this config or throw API
+scoreboard-active: false
+scoreboard-title: "&c&lTITANS CRAFT"
+# Not all placeholders will works if not all softDepends are loaded
+scoreboard-scores:
+  - "<7><m>-------------------"
+  - "<7>Your name: <c><DISPLAY_NAME>"
+  - "<7>Group name: <c><GROUP>"
+  - "<7>Ping: <c><PING>"
+  - "<7><m>-------------------"

@@ -10,6 +10,7 @@ import lombok.Getter;
 import org.bukkit.configuration.file.FileConfiguration;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Data
@@ -30,6 +31,8 @@ public class SettingsModule  {
             values.put(sections, fileConfiguration.get(sections));
         }
 
+        System.out.println(values);
+
     }
 
     public boolean getBoolean(String value){
@@ -38,6 +41,10 @@ public class SettingsModule  {
 
     public int getInt(String value){
         return Integer.parseInt(getString(value));
+    }
+
+    public List<String> getStringList(String value){
+        return (List<String>)values.get(value);
     }
 
     public String getString(String value){
