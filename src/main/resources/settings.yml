@@ -5,8 +5,20 @@
 # WARNING: Check all the valid langs in the lang directory
 lang: en_US
 
-# If true, teleport a player to #spawn-location on join
+# If true, teleport a player to  data.yml(spawn-location) on join
 spawn-teleport: true
 
-# If not <none> and spawn-teleport is true, teleport a player to this location
-spawn-location: "<none>"
+
+##########################
+#  TCore Chat section    #
+##########################
+
+# Valid Placeholders:
+# <PLAYER_NAME> = Player name
+# <DISPLAY_NAME> = Player Display name
+# <FACTION> = Player Faction ** (TFaction depend)
+# <LEVEL_COLOR> = Player Level Color ** (Leveling depend)
+# <LEVEL> = Player Level ** (Leveling depend)
+# <GROUP> = Player Group ** (LuckPerm depend)
+# <MESSAGE> = Player Message
+chat-format: "<b><PLAYER_NAME><7>: <MESSAGE>"

@@ -18,7 +18,9 @@ public class SetSpawnCommand extends FineCommand {
     @Override
     public void run(TPlayer player, CommandSender sender, String label, String[] args) {
         Location loc = player.getPlayer().getLocation();
-        YamlConfig.fastModify(plugin, "settings", "spawn-location", LocationUtil.convertToString(loc));
-        player.sendText("<a>Spawn was set to " + loc);
+        String converted = LocationUtil.convertToString(loc);
+        YamlConfig.fastModify(plugin, "data", "spawn-location", converted);
+        plugin.getDataModule().getValues().put("spawn-location", converted);
+        player.sendText("<a>Spawn was set to " + converted);
     }
 }

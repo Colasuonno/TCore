@@ -9,6 +9,7 @@ import com.tcore.managers.PlayersManager;
 import com.tcore.managers.TitansManager;
 import com.tcore.modules.GeoModule;
 import com.tcore.modules.PlayerModule;
+import com.tcore.modules.settings.DataModule;
 import com.tcore.modules.settings.SettingsModule;
 import com.tcore.utils.StringUtils;
 import com.tcore.utils.YamlConfig;
@@ -26,17 +27,20 @@ public class TCore extends JavaPlugin {
     @Getter private LangManager langManager;
     @Getter private GeoModule geoModule;
     @Getter private SettingsModule settingsModule;
+    @Getter private DataModule dataModule;
 
     @Override
     public void onEnable() {
 
         YamlConfig.create(this, "lang/en_US", true);
         YamlConfig.create(this, "settings", true);
-
+        YamlConfig.create(this, "data", true);
 
         // First module to load
+        this.dataModule = new DataModule(this);
         this.settingsModule = new SettingsModule(this);
         this.settingsModule.enable();
+        this.dataModule.enable();
 
         this.langManager = new LangManager(this);
         this.commandManager = new CommandManager(this);

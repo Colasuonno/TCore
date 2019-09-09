@@ -1,30 +1,26 @@
 package com.tcore.modules.settings;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import com.tcore.TCore;
-import com.tcore.managers.TitansManager;
 import com.tcore.utils.YamlConfig;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import org.bukkit.configuration.file.FileConfiguration;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @Data
-public class SettingsModule  {
+public class DataModule  {
 
     private Map<String, Object> values = new HashMap<>();
     private TCore tCore;
 
-    public SettingsModule(TCore tCore) {
+    public DataModule(TCore tCore) {
         this.tCore = tCore;
     }
 
     public void enable() {
 
-        FileConfiguration fileConfiguration = YamlConfig.getConfiguration(tCore, "settings");
+        FileConfiguration fileConfiguration = YamlConfig.getConfiguration(tCore, "data");
 
         for (String sections : fileConfiguration.getConfigurationSection("").getKeys(false)) {
             values.put(sections, fileConfiguration.get(sections));
@@ -45,3 +41,4 @@ public class SettingsModule  {
     }
 
 }
+

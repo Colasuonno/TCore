@@ -12,6 +12,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 public class PlayerListener implements Listener {
@@ -39,7 +40,7 @@ public class PlayerListener implements Listener {
                 );
 
         if (tCore.getSettingsModule().getBoolean("spawn-teleport")){
-            String loc = tCore.getSettingsModule().getString("spawn-location");
+            String loc = tCore.getDataModule().getString("spawn-location");
             if (!StringUtils.isNone(loc)){
                 player.getPlayer().teleport(LocationUtil.convertToLocation(loc));
             } else StringUtils.m(ChatColor.RED + "Spawn Teleport ACTIVE but location not set", Bukkit.getConsoleSender());
@@ -54,4 +55,12 @@ public class PlayerListener implements Listener {
             if (player.isGod()) e.setCancelled(true);
         }
     }
+
+    @EventHandler
+    public void onChat(AsyncPlayerChatEvent e){
+        TPlayer player = tCore.getPlayersManager().fromPlayer(e.getPlayer());
+        String format = tCore.getSettingsModule().getString("chat-format");
+        e.setFormat(tCore.getPlayerModule().getChatReplacerModule().replace(player, format, e.getMessage()));
+    }
+
 }

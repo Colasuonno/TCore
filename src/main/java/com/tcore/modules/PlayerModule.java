@@ -4,7 +4,9 @@ import com.tcore.TCore;
 import com.tcore.api.objects.TPlayer;
 import com.tcore.exception.TCoreException;
 import com.tcore.managers.TitansManager;
+import com.tcore.modules.chat.ChatReplacerModule;
 import com.tcore.utils.StringUtils;
+import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -12,9 +14,11 @@ import org.bukkit.entity.Player;
 public class PlayerModule extends TitansManager {
 
     private TCore api;
+    @Getter private ChatReplacerModule chatReplacerModule;
 
     public PlayerModule(TCore api) {
         this.api = api;
+        this.chatReplacerModule = new ChatReplacerModule();
     }
 
     @Override
