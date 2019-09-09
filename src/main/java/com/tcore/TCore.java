@@ -48,7 +48,6 @@ public class TCore extends JavaPlugin {
         this.playerModule = new PlayerModule(this);
         this.geoModule = new GeoModule(this);
 
-
         new PlayerListener(this);
         new InventoryListener(this);
 
