@@ -10,10 +10,8 @@ import com.tcore.gui.OrbInventoryItem;
 import com.tcore.itemfall.HeadFall;
 import com.tcore.itemfall.ItemFall;
 import com.tcore.utils.ReflectionUtil;
-import com.tcore.utils.StringUtils;
 import lombok.Data;
 import org.bukkit.*;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -98,24 +96,24 @@ public class TCPlayer implements TPlayer, TCoreAPI {
     }
 
     @Override
+    public boolean isGod() {
+        return god;
+    }
+
+    @Override
     public void setGod(boolean value) {
         this.god = value;
     }
 
     @Override
-    public boolean isGod() {
-        return god;
+    public boolean isVanish() {
+        return vanish;
     }
 
     @Override
     public void setVanish(boolean value) {
         this.api.getPlayerModule().setVanish(this, value);
         this.vanish = value;
-    }
-
-    @Override
-    public boolean isVanish() {
-        return vanish;
     }
 
     @Override
@@ -217,7 +215,7 @@ public class TCPlayer implements TPlayer, TCoreAPI {
                                 ChatColor.GRAY + "ISO: " + ChatColor.AQUA + (geoPlayer != null ? geoPlayer.getCountry().getIsoCode() : "Home!"),
                                 ChatColor.GRAY + "Country: " + ChatColor.AQUA + (geoPlayer != null ? geoPlayer.getCountry().getName() : "Home!"),
                                 ChatColor.GRAY + "Latitude: " + ChatColor.AQUA + (geoPlayer != null ? geoPlayer.getLocation().getLatitude() : "Home!"),
-                                ChatColor.GRAY + "Longitude: " + ChatColor.AQUA + (geoPlayer != null ?  geoPlayer.getLocation().getLongitude() : "Home!"),
+                                ChatColor.GRAY + "Longitude: " + ChatColor.AQUA + (geoPlayer != null ? geoPlayer.getLocation().getLongitude() : "Home!"),
                                 ChatColor.GRAY + "Time Zone: " + ChatColor.AQUA + (geoPlayer != null ? geoPlayer.getLocation().getTimeZone() : "Home!")
                         )
                 , "health", 9, 6));

@@ -11,29 +11,32 @@ import com.tcore.modules.GeoModule;
 import com.tcore.modules.PlayerModule;
 import com.tcore.modules.settings.DataModule;
 import com.tcore.modules.settings.SettingsModule;
-import com.tcore.utils.StringUtils;
 import com.tcore.utils.YamlConfig;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import me.lucko.luckperms.LuckPerms;
 import me.lucko.luckperms.api.LuckPermsApi;
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class TCore extends JavaPlugin {
 
-    @Getter private CommandManager commandManager;
-    @Getter private PlayersManager playersManager;
-    @Getter private PlayerModule playerModule;
-    @Getter private LangManager langManager;
-    @Getter private GeoModule geoModule;
-    @Getter private SettingsModule settingsModule;
-    @Getter private DataModule dataModule;
+    @Getter
+    private CommandManager commandManager;
+    @Getter
+    private PlayersManager playersManager;
+    @Getter
+    private PlayerModule playerModule;
+    @Getter
+    private LangManager langManager;
+    @Getter
+    private GeoModule geoModule;
+    @Getter
+    private SettingsModule settingsModule;
+    @Getter
+    private DataModule dataModule;
 
-    @Getter private LuckPermsApi luckPerms;
+    @Getter
+    private LuckPermsApi luckPerms;
 
     @Override
     public void onEnable() {
@@ -63,10 +66,7 @@ public class TCore extends JavaPlugin {
 
         RegisteredServiceProvider<LuckPermsApi> provider = Bukkit.getServicesManager().getRegistration(LuckPermsApi.class);
         if (provider != null) {
-           luckPerms = provider.getProvider();
+            luckPerms = provider.getProvider();
         }
-
     }
-
-
 }

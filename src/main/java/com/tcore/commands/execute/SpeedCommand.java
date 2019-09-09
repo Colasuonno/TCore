@@ -17,8 +17,8 @@ public class SpeedCommand extends FineCommand {
 
     @Override
     public void run(TPlayer player, CommandSender sender, String label, String[] args) {
-        if (args.length == 1){
-            if (!StringUtils.isInt(args[0])){
+        if (args.length == 1) {
+            if (!StringUtils.isInt(args[0])) {
                 super.plugin.getPlayerModule().sendText(sender, ChatColor.RED + "Insert a valid integer");
             } else {
 
@@ -28,8 +28,8 @@ public class SpeedCommand extends FineCommand {
                 if (value < 1) value = 1;
                 else if (value > 10) value = 10;
 
-                if (bukkit.isOnGround()) bukkit.setWalkSpeed( value == 1 ? 0.2f : (float)value/10.0f);
-                else bukkit.setFlySpeed( value == 1 ? 0.2f : (float)value/10.0f);
+                if (bukkit.isOnGround()) bukkit.setWalkSpeed(value == 1 ? 0.2f : (float) value / 10.0f);
+                else bukkit.setFlySpeed(value == 1 ? 0.2f : (float) value / 10.0f);
                 player.sendMessage("speed-solo", (bukkit.isOnGround() ? "Walking" : "Flying"), value);
 
             }

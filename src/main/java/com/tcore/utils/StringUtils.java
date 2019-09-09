@@ -1,10 +1,8 @@
 package com.tcore.utils;
 
-import net.md_5.bungee.api.chat.ClickEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 
 import java.nio.charset.Charset;
@@ -13,6 +11,17 @@ import java.util.*;
 
 
 public class StringUtils {
+
+    private static final NavigableMap<Long, String> suffixes = new TreeMap<>();
+
+    static {
+        suffixes.put(1_000L, "k");
+        suffixes.put(1_000_000L, "M");
+        suffixes.put(1_000_000_000L, "B");
+        suffixes.put(1_000_000_000_000L, "T");
+        suffixes.put(1_000_000_000_000_000L, "P");
+        suffixes.put(1_000_000_000_000_000_000L, "E");
+    }
 
     /**
      * Gets the date by a format
@@ -38,15 +47,15 @@ public class StringUtils {
         return formatter.format(date);
     }
 
-
     /**
      * Get only ints in a string
+     *
      * @param string
      * @return
      */
-    public static Integer getOnlyInts(String string){
+    public static Integer getOnlyInts(String string) {
         StringBuilder builder = new StringBuilder();
-        for (char c : string.toCharArray()){
+        for (char c : string.toCharArray()) {
             if (isInt(c)) builder.append(c);
         }
         return Integer.parseInt(builder.toString());
@@ -74,7 +83,7 @@ public class StringUtils {
         return Integer.parseInt(builder.toString());
     }
 
-    public static boolean containsMultiple(String input, String contains){
+    public static boolean containsMultiple(String input, String contains) {
         if (!input.contains(contains)) return false;
         List<List<Integer>> indexes = getIndexes(input, contains);
 
@@ -87,11 +96,11 @@ public class StringUtils {
             char temp = '~';
             char temp2 = '~';
             boolean combo = false;
-            for (int j = input.length()-1; j >= 0; j--) {
+            for (int j = input.length() - 1; j >= 0; j--) {
                 char k = input.toCharArray()[j];
                 if (temp == '~' && k == c && hasNext(input.toCharArray(), j)) {
                     temp = input.toCharArray()[j + 1];
-                    if (temp2 == '~' && hasPrevious(input.toCharArray(), j-1) && input.toCharArray()[j - 2] == c) {
+                    if (temp2 == '~' && hasPrevious(input.toCharArray(), j - 1) && input.toCharArray()[j - 2] == c) {
                         temp2 = input.toCharArray()[j - 1];
                         combo = true;
                     }
@@ -201,7 +210,6 @@ public class StringUtils {
         return sb.toString();
     }
 
-
     /**
      * Gets the exact indexes of a word contained in a given string(full) ignoring values given
      *
@@ -243,7 +251,6 @@ public class StringUtils {
         }
         return result;
     }
-
 
     /**
      * Gets the exact indexes of a word contained in a given string(full) ignoring values given
@@ -287,7 +294,6 @@ public class StringUtils {
         return result;
     }
 
-
     public static String uuidConvert(UUID uuid) {
         return uuid.toString().toLowerCase().replace("-", "");
     }
@@ -323,7 +329,6 @@ public class StringUtils {
             return false;
         }
     }
-
 
     /**
      * Gets a string between two others
@@ -361,8 +366,6 @@ public class StringUtils {
         return result;
     }
 
-
-
     /**
      * Get the string value of following input element
      *
@@ -377,17 +380,6 @@ public class StringUtils {
             if (i != input.length - 1) builder.append(" ");
         }
         return builder.toString();
-    }
-
-    private static final NavigableMap<Long, String> suffixes = new TreeMap<>();
-
-    static {
-        suffixes.put(1_000L, "k");
-        suffixes.put(1_000_000L, "M");
-        suffixes.put(1_000_000_000L, "B");
-        suffixes.put(1_000_000_000_000L, "T");
-        suffixes.put(1_000_000_000_000_000L, "P");
-        suffixes.put(1_000_000_000_000_000_000L, "E");
     }
 
     /**

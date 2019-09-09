@@ -33,7 +33,7 @@ public class YamlConfig {
     }
 
     public static FileConfiguration getConfiguration(Plugin plugin, String filename) {
-        init(plugin,filename);
+        init(plugin, filename);
         if (file.exists()) {
             loadConfiguration();
             return configuration;
@@ -71,9 +71,9 @@ public class YamlConfig {
     }
 
     public static void fastModify(Plugin plugin, String filename, String path, Object object) {
-        FileConfiguration fileConfiguration = getConfiguration(plugin,filename);
+        FileConfiguration fileConfiguration = getConfiguration(plugin, filename);
         fileConfiguration.set(path, object);
-        saveConfig(plugin,fileConfiguration, filename);
+        saveConfig(plugin, fileConfiguration, filename);
     }
 
     /**

@@ -6,8 +6,6 @@ import com.tcore.commands.CommandManager;
 import com.tcore.commands.FineCommand;
 import org.bukkit.command.CommandSender;
 
-import java.util.List;
-
 public class BackCommand extends FineCommand {
 
     public BackCommand(TCore plugin) {
@@ -16,7 +14,7 @@ public class BackCommand extends FineCommand {
 
     @Override
     public void run(TPlayer player, CommandSender sender, String label, String[] args) {
-        if (player.getLastTeleportLocation() != null){
+        if (player.getLastTeleportLocation() != null) {
             player.getPlayer().teleport(player.getLastTeleportLocation());
         } else player.sendMessage("back-solo");
     }

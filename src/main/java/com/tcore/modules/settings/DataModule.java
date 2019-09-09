@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Data
-public class DataModule  {
+public class DataModule {
 
     private Map<String, Object> values = new HashMap<>();
     private TCore tCore;
@@ -28,15 +28,15 @@ public class DataModule  {
 
     }
 
-    public boolean getBoolean(String value){
+    public boolean getBoolean(String value) {
         return Boolean.parseBoolean(getString(value));
     }
 
-    public int getInt(String value){
+    public int getInt(String value) {
         return Integer.parseInt(getString(value));
     }
 
-    public String getString(String value){
+    public String getString(String value) {
         return String.valueOf(values.get(value));
     }
 

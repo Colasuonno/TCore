@@ -7,7 +7,6 @@ import org.bukkit.Material;
 public class LocationUtil {
 
 
-
     public static String convertToString(Location location) {
         return location.getWorld().getName() + ":" + location.getX() + ":" + location.getY() + ":" + location.getZ() + ":" + location.getYaw() + ":" + location.getPitch();
     }

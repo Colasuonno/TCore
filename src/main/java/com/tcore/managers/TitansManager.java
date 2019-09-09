@@ -1,7 +1,6 @@
 package com.tcore.managers;
 
 import com.tcore.api.TManager;
-import lombok.Data;
 import lombok.Getter;
 
 import java.util.HashSet;

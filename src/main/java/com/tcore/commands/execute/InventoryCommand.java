@@ -16,10 +16,10 @@ public class InventoryCommand extends FineCommand {
 
     @Override
     public void run(TPlayer player, CommandSender sender, String label, String[] args) {
-        if (args.length == 1){
+        if (args.length == 1) {
 
             Player bukkit = Bukkit.getPlayer(args[0]);
-            if (bukkit == null){
+            if (bukkit == null) {
                 player.sendMessage("player-not-found");
                 return;
             }

@@ -14,7 +14,8 @@ import org.bukkit.entity.Player;
 public class PlayerModule extends TitansManager {
 
     private TCore api;
-    @Getter private ChatReplacerModule chatReplacerModule;
+    @Getter
+    private ChatReplacerModule chatReplacerModule;
 
     public PlayerModule(TCore api) {
         this.api = api;

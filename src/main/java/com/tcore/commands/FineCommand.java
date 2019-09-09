@@ -85,7 +85,7 @@ public abstract class FineCommand extends BukkitCommand {
         else {
             if (isAllowed(commandSender)) {
                 if (commandSender instanceof Player) {
-                    TPlayer tPlayer = plugin.getPlayersManager().fromPlayer((Player)commandSender);
+                    TPlayer tPlayer = plugin.getPlayersManager().fromPlayer((Player) commandSender);
                     run(tPlayer, commandSender, s, strings);
                 } else run(null, commandSender, s, strings);
             } else commandSender.sendMessage(ChatColor.RED + "You do not have permission");
