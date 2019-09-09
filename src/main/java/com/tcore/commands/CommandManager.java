@@ -2,7 +2,6 @@ package com.tcore.commands;
 
 import com.google.common.reflect.ClassPath;
 import com.tcore.TCore;
-import com.tcore.api.TManager;
 import com.tcore.managers.TitansManager;
 import com.tcore.utils.ReflectionUtil;
 import org.bukkit.plugin.Plugin;
@@ -22,29 +21,6 @@ public class CommandManager extends TitansManager {
     public CommandManager(Plugin plugin) {
         this.plugin = plugin;
     }
-
-    @Override
-    public void disable() {
-
-    }
-
-    public void enable(){
-        try {
-            ClassPath path = ClassPath.from(plugin.getClass().getClassLoader());
-            for (ClassPath.ClassInfo info : path.getTopLevelClassesRecursive("com.tcore.commands")) {
-                Class classz = Class.forName(info.getName(), true, plugin.getClass().getClassLoader());
-                if (classz != null && !classz.isAnnotation() && !classz.isEnum() && FineCommand.class.isAssignableFrom(classz) && !classz.equals(FineCommand.class)) {
-                    Constructor<?> constructor = ReflectionUtil.getConstructor(classz, TCore.class);
-                    if (constructor != null) {
-                        ReflectionUtil.newConstructorInstance(constructor, plugin);
-                    }
-                }
-            }
-        } catch (Exception ew) {
-            ew.printStackTrace();
-        }
-    }
-
 
     /**
      * Scans all classes accessible from the context class loader which belong to the given package and subpackages.
@@ -95,6 +71,28 @@ public class CommandManager extends TitansManager {
             }
         }
         return classes;
+    }
+
+    @Override
+    public void disable() {
+
+    }
+
+    public void enable() {
+        try {
+            ClassPath path = ClassPath.from(plugin.getClass().getClassLoader());
+            for (ClassPath.ClassInfo info : path.getTopLevelClassesRecursive("com.tcore.commands")) {
+                Class classz = Class.forName(info.getName(), true, plugin.getClass().getClassLoader());
+                if (classz != null && !classz.isAnnotation() && !classz.isEnum() && FineCommand.class.isAssignableFrom(classz) && !classz.equals(FineCommand.class)) {
+                    Constructor<?> constructor = ReflectionUtil.getConstructor(classz, TCore.class);
+                    if (constructor != null) {
+                        ReflectionUtil.newConstructorInstance(constructor, plugin);
+                    }
+                }
+            }
+        } catch (Exception ew) {
+            ew.printStackTrace();
+        }
     }
 
     public enum CommandType {

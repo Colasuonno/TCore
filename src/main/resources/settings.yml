@@ -21,6 +21,14 @@ lang: en_US
 # If true, teleport a player to  data.yml(spawn-location) on join
 spawn-teleport: true
 
+# If true, players will not take any type of damage
+invincibility: false
+
+# If false, players will not lose food level
+food-level-change: true
+
+# If true, players will not be able to break block
+no-break-block: false
 
 ##########################
 #  TCore Chat section    #

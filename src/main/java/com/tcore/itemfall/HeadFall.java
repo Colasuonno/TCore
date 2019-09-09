@@ -1,9 +1,7 @@
 package com.tcore.itemfall;
 
-import org.apache.commons.lang.Validate;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.inventory.meta.SkullMeta;
 
 import java.util.ArrayList;
@@ -19,7 +17,7 @@ public class HeadFall extends ItemFall {
      * @param lore        description
      */
     public HeadFall(String displayName, int amount, List<String> lore) {
-        super(skullMaterial(), displayName, amount, (short)0, lore);
+        super(skullMaterial(), displayName, amount, (short) 0, lore);
         if (super.getType().name().toLowerCase().contains("skull")) {
             dur((short) 3); // setting player data for <1.13
         }

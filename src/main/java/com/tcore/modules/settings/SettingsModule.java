@@ -1,12 +1,8 @@
 package com.tcore.modules.settings;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import com.tcore.TCore;
-import com.tcore.managers.TitansManager;
 import com.tcore.utils.YamlConfig;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import org.bukkit.configuration.file.FileConfiguration;
 
 import java.util.HashMap;
@@ -14,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 @Data
-public class SettingsModule  {
+public class SettingsModule {
 
     private Map<String, Object> values = new HashMap<>();
     private TCore tCore;
@@ -35,19 +31,21 @@ public class SettingsModule  {
 
     }
 
-    public boolean getBoolean(String value){
+    public boolean getBoolean(String value) {
         return Boolean.parseBoolean(getString(value));
     }
 
-    public int getInt(String value){
+    public int getInt(String value) {
         return Integer.parseInt(getString(value));
     }
+
 
     public List<String> getStringList(String value){
         return (List<String>)values.get(value);
     }
 
-    public String getString(String value){
+
+    public String getString(String value) {
         return String.valueOf(values.get(value));
     }
 

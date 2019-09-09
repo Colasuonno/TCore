@@ -47,7 +47,7 @@ public class TeleportCommand extends FineCommand {
 
             player.getPlayer().teleport(new Location(player.getPlayer().getWorld(), Integer.parseInt(x), Integer.parseInt(y), Integer.parseInt(z)));
             player.sendMessage("teleport-coords", x, y, z);
-        }else super.plugin.getPlayerModule().sendText(sender, "<7>/teleport <c>(player)");
+        } else super.plugin.getPlayerModule().sendText(sender, "<7>/teleport <c>(player)");
     }
 }
 

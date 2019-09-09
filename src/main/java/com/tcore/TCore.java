@@ -13,19 +13,15 @@ import com.tcore.modules.scoreboard.ScoreboardModule;
 import com.tcore.modules.settings.DataModule;
 import com.tcore.modules.settings.SettingsModule;
 import com.tcore.task.AsyncScoreboardPlacer;
-import com.tcore.utils.StringUtils;
 import com.tcore.utils.YamlConfig;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import me.lucko.luckperms.LuckPerms;
 import me.lucko.luckperms.api.LuckPermsApi;
 import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class TCore extends JavaPlugin {
+
 
     @Getter private CommandManager commandManager;
     @Getter private PlayersManager playersManager;
@@ -36,7 +32,8 @@ public class TCore extends JavaPlugin {
     @Getter private DataModule dataModule;
     @Getter private ScoreboardModule scoreboardModule;
 
-    @Getter private LuckPermsApi luckPerms;
+    @Getter
+    private LuckPermsApi luckPerms;
 
 
     @Override
@@ -71,10 +68,7 @@ public class TCore extends JavaPlugin {
 
         RegisteredServiceProvider<LuckPermsApi> provider = Bukkit.getServicesManager().getRegistration(LuckPermsApi.class);
         if (provider != null) {
-           luckPerms = provider.getProvider();
+            luckPerms = provider.getProvider();
         }
-
     }
-
-
 }

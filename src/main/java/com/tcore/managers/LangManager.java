@@ -13,7 +13,8 @@ public class LangManager extends TitansManager {
 
     private TCore plugin;
     private String lang;
-    @Getter private LangModule langModule;
+    @Getter
+    private LangModule langModule;
 
     public LangManager(TCore plugin) {
         this.plugin = plugin;
@@ -40,7 +41,7 @@ public class LangManager extends TitansManager {
                     }
                 }
             } else throw new TCoreException("Lang must be a directory!");
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

@@ -34,13 +34,13 @@ public interface TPlayer {
 
     boolean isFlying();
 
-    void setGod(boolean value);
-
     boolean isGod();
 
-    void setVanish(boolean value);
+    void setGod(boolean value);
 
     boolean isVanish();
+
+    void setVanish(boolean value);
 
     void setHeal(int value);
 
@@ -58,7 +58,7 @@ public interface TPlayer {
 
     void setLastTeleportLocation(Location location);
 
-    void setLastTextedPlayer(UUID uuid);
-
     UUID getLastTextedPlayer();
+
+    void setLastTextedPlayer(UUID uuid);
 }

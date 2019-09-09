@@ -6,39 +6,39 @@ import org.bukkit.inventory.ItemStack;
 
 public class OrbInventoryItem {
 
-   private ItemStack itemStack;
-   private int x;
-   private int y;
-   private int bukkitPosition;
-   private String metaData;
+    private ItemStack itemStack;
+    private int x;
+    private int y;
+    private int bukkitPosition;
+    private String metaData;
 
-   public OrbInventoryItem(ItemStack itemStack, String metaData, int x, int y) {
-       if (metaData == null) metaData = "default-meta";
-       this.itemStack = itemStack;
-       this.x = x;
-       this.y = y;
-       this.metaData = metaData;
-       this.bukkitPosition = PositionUtil.getBukkitPosition(x,y);
-   }
+    public OrbInventoryItem(ItemStack itemStack, String metaData, int x, int y) {
+        if (metaData == null) metaData = "default-meta";
+        this.itemStack = itemStack;
+        this.x = x;
+        this.y = y;
+        this.metaData = metaData;
+        this.bukkitPosition = PositionUtil.getBukkitPosition(x, y);
+    }
 
     public OrbInventoryItem(ItemStack itemStack, String metaData, int bukkitPosition) {
         if (metaData == null) metaData = "default-meta";
         this.itemStack = itemStack;
         this.metaData = metaData;
-        this.bukkitPosition = PositionUtil.getBukkitPosition(x,y);
+        this.bukkitPosition = PositionUtil.getBukkitPosition(x, y);
     }
 
-   public OrbInventoryItem(ItemStack itemStack) {
-       this.metaData = "default-meta";
-       this.itemStack = itemStack;
-   }
-
-    public void setItemStack(ItemStack itemStack) {
+    public OrbInventoryItem(ItemStack itemStack) {
+        this.metaData = "default-meta";
         this.itemStack = itemStack;
     }
 
     public ItemStack getItemStack() {
         return itemStack;
+    }
+
+    public void setItemStack(ItemStack itemStack) {
+        this.itemStack = itemStack;
     }
 
     public int getX() {

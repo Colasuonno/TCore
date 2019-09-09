@@ -3,9 +3,7 @@ package com.tcore.modules.chat;
 import com.tcore.TCore;
 import com.tcore.api.objects.TPlayer;
 import com.tcore.utils.StringUtils;
-import gyurix.leveling.LevelingAPI;
 import me.lucko.luckperms.api.Contexts;
-import me.lucko.luckperms.api.Group;
 import me.lucko.luckperms.api.User;
 import me.lucko.luckperms.api.caching.MetaData;
 import org.bukkit.ChatColor;
@@ -36,6 +34,7 @@ public class ChatReplacerModule {
         return ChatColor.GRAY.toString();
     }
 
+
     public List<String> replace(TPlayer player, List<String> input) {
         List<String> result = new ArrayList<>();
         for (String a : input){
@@ -43,6 +42,7 @@ public class ChatReplacerModule {
         }
         return result;
     }
+
 
     public String replace(TPlayer player, String input, String message) {
         TCore api = player.getApi().getAPI();
