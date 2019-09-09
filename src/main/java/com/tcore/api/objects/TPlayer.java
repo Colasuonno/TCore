@@ -53,4 +53,7 @@ public interface TPlayer {
 
     CityResponse getCityResponse();
 
+    void setLastTextedPlayer(UUID uuid);
+
+    UUID getLastTextedPlayer();
 }
